@@ -86,7 +86,7 @@ set shortmess=atI
 set showmode
 
 " Load bundles
-call pathogen#incubate()
+" call pathogen#incubate()
 
 let mapleader=","
 
