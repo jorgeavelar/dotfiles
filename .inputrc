@@ -1,6 +1,6 @@
 set editing-mode vi
-set keymap vi 
-set show-all-if-ambiguous on                        
+set keymap vi
+set show-all-if-ambiguous on
 set visible-stats on
 set match-hidden-files off
 set mark-symlinked-directories on
