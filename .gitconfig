@@ -37,7 +37,7 @@
 
 [color]
 	# Use colors in Git commands that are capable of colored output when outputting to the terminal
-	ui = auto
+	ui = true
 [color "branch"]
 	current = yellow reverse
 	local = yellow
@@ -48,9 +48,10 @@
 	old = red bold
 	new = green bold
 [color "status"]
-	added = yellow
-	changed = green
-	untracked = cyan
+	added = green
+	changed = yellow
+	untracked = red
+	
 [merge]
 	# Include summaries of merged commits in newly created merge commit messages
 	log = true
