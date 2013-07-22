@@ -23,7 +23,7 @@ set tabstop=2
 set shiftwidth=2
 set expandtab
 
-set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
+" set lcs=tab:▸\ ,trail:·,eol:¬,nbsp:_
 set list
 set hlsearch
 set ignorecase
