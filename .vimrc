@@ -1,51 +1,28 @@
-set nocompatible               " be iMproved
-filetype off                   " required!
+syntax on
+set number
+set nocompatible
+filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
-" let Vundle manage Vundle
-" required! 
 Bundle 'gmarik/vundle'
 
-" My Bundles here:
-"
-" original repos on github
 Bundle 'tpope/vim-fugitive'
 Bundle 'Lokaltog/vim-easymotion'
 Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
 Bundle 'tpope/vim-rails.git'
-" vim-scripts repos
 Bundle 'L9'
 Bundle 'FuzzyFinder'
-" non github repos
 Bundle 'git://git.wincent.com/command-t.git'
-" git repos on your local machine (ie. when working on your own plugin)
-" Bundle 'file:///Users/gmarik/path/to/plugin'
-" ...
-
+Bundle 'git://git.scrooloose/nerdtree.git'
 Bundle "MarcWeber/vim-addon-mw-utils"
 Bundle "tomtom/tlib_vim"
 Bundle "garbas/vim-snipmate"
+Bundle 'flazz/vim-colorschemes'
 
+filetype plugin indent on
 
-
-filetype plugin indent on     " required!
-"
-" Brief help
-" :BundleList          - list configured bundles
-" :BundleInstall(!)    - install(update) bundles
-" :BundleSearch(!) foo - search(or refresh cache first) for foo
-" :BundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-"
-" see :h vundle for more details or wiki for FAQ
-" NOTE: comments after Bundle command are not allowed..
-
-
-syntax on
-
-" set nocompatible
-set number
 
 set title
 set showcmd
@@ -78,8 +55,10 @@ set nostartofline
 set ruler
 set shortmess=atI
 set showmode
+set t_Co=256
 
 let mapleader=","
+let g:rehash256 = 1
 
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
@@ -91,8 +70,9 @@ endif
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 if has("autocmd")
-  " Enable file type detection
   filetype on
-  " Treat .json files as .js
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
+
+colorscheme molokai
+set background=dark
