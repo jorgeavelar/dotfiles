@@ -1,28 +1,45 @@
 syntax on
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+colorscheme monokai
+
 set number
 set nocompatible
-filetype off
+set background=dark
+
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
+" Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
 
+" My Bundles
+Bundle 'vim-ruby/vim-ruby'
+Bundle 'tpope/vim-haml'
+Bundle 'tpope/vim-rails'
+Bundle 'tpope/vim-rake'
+Bundle 'ecomba/vim-ruby-refactoring'
+Bundle 'danchoi/ri_vim'
+Bundle 'tpope/vim-cucumber'
+Bundle 'thoughtbot/vim-rspec'
+Bundle 'pangloss/vim-javascript'
+Bundle 'kchmck/vim-coffee-script'
+
+Bundle 'tpope/vim-sensible'
+Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
-Bundle 'Lokaltog/vim-easymotion'
-Bundle 'rstacruz/sparkup', {'rtp': 'vim/'}
-Bundle 'tpope/vim-rails.git'
-Bundle 'L9'
-Bundle 'FuzzyFinder'
-Bundle 'git://git.wincent.com/command-t.git'
-"Bundle 'git://git.scrooloose/nerdtree.git'
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-Bundle 'flazz/vim-colorschemes'
-
-filetype plugin indent on
-
+Bundle 'nanotech/jellybeans.vim'
+Bundle 'Lokaltog/vim-powerline'
+Bundle 'scrooloose/syntastic'
+Bundle 'scrooloose/nerdtree'
+Bundle 'kien/ctrlp.vim'
+Bundle 'rking/ag.vim'
+Bundle 'kana/vim-textobj-user'
+Bundle 'nelstrom/vim-textobj-rubyblock'
+Bundle 'slim-template/vim-slim'
 
 set title
 set showcmd
@@ -74,5 +91,10 @@ if has("autocmd")
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
 
-colorscheme molokai
-set background=dark
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>
+
