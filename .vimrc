@@ -41,6 +41,17 @@ Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'slim-template/vim-slim'
 
+Bundle 'Blackrush/vim-gocode'
+Bundle 'derekwyatt/vim-scala'
+Bundle 'jQuery'
+
+Bundle 'guns/vim-clojure-static'
+Bundle 'tpope/vim-liquid'
+Bundle 'tpope/vim-markdown'
+Bundle 'psykidellic/vim-jekyll'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'airblade/vim-gitgutter'
+
 set title
 set showcmd
 set clipboard=unnamed
@@ -76,6 +87,12 @@ set t_Co=256
 
 let mapleader=","
 let g:rehash256 = 1
+" let g:gitgutter_highlight_lines = 1
+let g:gitgutter_sign_added = '+'
+let g:gitgutter_sign_modified = '~'
+let g:gitgutter_sign_removed = '-'
+"let g:gitgutter_sign_modified_removed = 'ww'
+let g:gitgutter_signs = 1
 
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
