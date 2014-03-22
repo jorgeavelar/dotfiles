@@ -94,6 +94,8 @@ let g:gitgutter_sign_removed = '-'
 "let g:gitgutter_sign_modified_removed = 'ww'
 let g:gitgutter_signs = 1
 
+let NERDTreeShowHidden=1
+
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 

@@ -12,7 +12,7 @@ color_maven() {
     -e 's/\(FAILURE!.*\)/[1;31m\1[0m/g' \
     -e 's/\(BUILD SUCCESS.*\)/[1;37m\1[0m/g' \
     -e 's/\(SUCCESS.*\)/[1;37m\1[0m/g' 
-    
 }
 
 alias mvn=color_maven
+
