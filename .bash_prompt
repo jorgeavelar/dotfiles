@@ -1,1 +1,2 @@
-PS1="\[$(tput bold)$(tput setaf 2)\]\u@\h:\[$(tput bold)$(tput setaf 3)\]\w\[$(tput setaf 1)\]\$(__git_ps1)\[$(tput sgr0)\]$ \[$(tput sgr0)\]"
+# PS1="\[$(tput bold)$(tput setaf 2)\]\u@\h:\[$(tput bold)$(tput setaf 3)\]\w\[$(tput setaf 1)\]\$(__git_ps1)\[$(tput sgr0)\]$ \[$(tput sgr0)\]"
+PS1="\[$(tput bold)$(tput setaf 0)\]\u@\h:\[$(tput bold)$(tput setaf 0)\]\w\[$(tput setaf 1)\]\$(__git_ps1)\[$(tput sgr0)\]$ \[$(tput sgr0)\]"
