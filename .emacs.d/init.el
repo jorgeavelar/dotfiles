@@ -26,6 +26,7 @@
 (require 'init-whitespace)
 (require 'init-windmove)
 (require 'init-yasnippet)
+(require 'init-clojure-mode)
 
 (setq custom-file (expand-file-name "custom.el" dotemacs-dir))
 (when (file-exists-p custom-file)
