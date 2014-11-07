@@ -1,33 +1,29 @@
+execute pathogen#infect()
+
 syntax on
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
 filetype plugin on    " Enable filetype-specific plugins
-
 colorscheme monokai
 
 set number
 set nocompatible
 set background=dark
 
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
 
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
-
-" Let Vundle manage Vundle
 Bundle 'gmarik/vundle'
-
-" My Bundles
+Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
 Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
 Bundle 'ecomba/vim-ruby-refactoring'
 Bundle 'danchoi/ri_vim'
-Bundle 'tpope/vim-cucumber'
 Bundle 'thoughtbot/vim-rspec'
 Bundle 'pangloss/vim-javascript'
 Bundle 'kchmck/vim-coffee-script'
-
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
@@ -40,17 +36,20 @@ Bundle 'rking/ag.vim'
 Bundle 'kana/vim-textobj-user'
 Bundle 'nelstrom/vim-textobj-rubyblock'
 Bundle 'slim-template/vim-slim'
-
+Bundle 'jistr/vim-nerdtree-tabs'
 Bundle 'Blackrush/vim-gocode'
 Bundle 'derekwyatt/vim-scala'
-Bundle 'jQuery'
-
+Bundle 'elzr/vim-json'
+Bundle 'honza/vim-snippets'
 Bundle 'guns/vim-clojure-static'
+Bundle 'guns/vim-clojure-highlight'
 Bundle 'tpope/vim-liquid'
 Bundle 'tpope/vim-markdown'
 Bundle 'psykidellic/vim-jekyll'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'airblade/vim-gitgutter'
+Bundle 'takac/vim-fontmanager' 
+Bundle 'jQuery'
 
 set title
 set showcmd
@@ -87,13 +86,11 @@ set t_Co=256
 
 let mapleader=","
 let g:rehash256 = 1
-" let g:gitgutter_highlight_lines = 1
 let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '-'
-"let g:gitgutter_sign_modified_removed = 'ww'
 let g:gitgutter_signs = 1
-
+let g:fontman_style = "bold"
 let NERDTreeShowHidden=1
 
 set backupdir=~/.vim/backups
@@ -109,7 +106,6 @@ if has("autocmd")
   filetype on
   autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
 endif
-
 
 " RSpec.vim mappings
 map <Leader>t :call RunCurrentSpecFile()<CR>
