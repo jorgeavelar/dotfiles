@@ -1,0 +1,11 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =9
+let g:netrw_dirhist_1='/home/jorgeavelar/Projects/apps/suba/app/services/chat'
+let g:netrw_dirhist_2='/home/jorgeavelar/Projects/apps/suba/app/services/chat/ticket'
+let g:netrw_dirhist_3='/home/jorgeavelar/Projects/apps/suba'
+let g:netrw_dirhist_4='/home/jorgeavelar/Projects/apps/suba/app'
+let g:netrw_dirhist_5='/home/jorgeavelar/Projects/apps/suba/app/controllers'
+let g:netrw_dirhist_6='/home/jorgeavelar'
+let g:netrw_dirhist_7='/home/jorgeavelar/Sites/appclj'
+let g:netrw_dirhist_8='/home/jorgeavelar/Sites/appclj/src'
+let g:netrw_dirhist_9='/home/jorgeavelar/Sites/appclj/src/appclj'
