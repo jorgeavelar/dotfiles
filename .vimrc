@@ -1,5 +1,3 @@
-execute pathogen#infect()
-
 syntax on
 filetype on           " Enable filetype detection
 filetype indent on    " Enable filetype-specific indenting
@@ -10,10 +8,11 @@ set number
 set nocompatible
 set background=dark
 
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
 
-Bundle 'gmarik/vundle'
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#rc()
+
+Plugin 'gmarik/Vundle.vim'
 Bundle 'Valloric/YouCompleteMe'
 Bundle 'vim-ruby/vim-ruby'
 Bundle 'tpope/vim-haml'
@@ -44,12 +43,13 @@ Bundle 'honza/vim-snippets'
 Bundle 'guns/vim-clojure-static'
 Bundle 'guns/vim-clojure-highlight'
 Bundle 'tpope/vim-liquid'
-Bundle 'tpope/vim-markdown'
+" Bundle 'tpope/vim-markdown'
 Bundle 'psykidellic/vim-jekyll'
 Bundle 'digitaltoad/vim-jade'
 Bundle 'airblade/vim-gitgutter'
 Bundle 'takac/vim-fontmanager' 
-Bundle 'jQuery'
+Plugin 'flazz/vim-colorschemes'
+
 
 set title
 set showcmd
@@ -61,16 +61,18 @@ set ttyfast
 set gdefault
 set encoding=utf-8 nobomb
 
-set tabstop=2
-set shiftwidth=2
-set expandtab
+" set tabstop=2
+" set shiftwidth=2
+" set expandtab
 
 set binary
 set noeol
 set modeline
 set exrc
 set secure
-set cursorline
+" set cursorline
+
+set gfn=Monaco\ 10
 
 set hlsearch
 set ignorecase
@@ -90,7 +92,7 @@ let g:gitgutter_sign_added = '+'
 let g:gitgutter_sign_modified = '~'
 let g:gitgutter_sign_removed = '-'
 let g:gitgutter_signs = 1
-let g:fontman_style = "bold"
+
 let NERDTreeShowHidden=1
 
 set backupdir=~/.vim/backups
@@ -103,8 +105,12 @@ endif
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 if has("autocmd")
-  filetype on
-  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+	filetype on
+	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+	au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+	au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
+	au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
+	set shiftwidth=2 tabstop=2 expandtab
 endif
 
 " RSpec.vim mappings
