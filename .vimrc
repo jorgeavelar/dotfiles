@@ -1,28 +1,39 @@
 syntax on
-filetype on           " Enable filetype detection
-filetype indent on    " Enable filetype-specific indenting
-filetype plugin on    " Enable filetype-specific plugins
-colorscheme monokai
+filetype on
+filetype indent on
+filetype plugin on
 
+set nowrap
 set number
 set nocompatible
-set background=dark
-
+set background=light
+set list
 
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#rc()
 
+Plugin 'elixir-lang/vim-elixir'
+Plugin 'mattn/emmet-vim'
 Plugin 'gmarik/Vundle.vim'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'mileszs/ack.vim'
+Plugin 'flazz/vim-colorschemes'
+
+Plugin 'leafgarland/typescript-vim'
+Plugin 'peitalin/vim-jsx-typescript'
+
+Plugin 'bfrg/vim-cpp-modern'
+Plugin 'octol/vim-cpp-enhanced-highlight'
+
+"python sytax checker
+Plugin 'nvie/vim-flake8'
+Plugin 'vim-scripts/Pydiction'
+Plugin 'vim-scripts/indentpython.vim'
+Plugin 'ocaml/vim-ocaml'
+
 Bundle 'vim-ruby/vim-ruby'
-Bundle 'tpope/vim-haml'
-Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-rake'
-Bundle 'ecomba/vim-ruby-refactoring'
-Bundle 'danchoi/ri_vim'
-Bundle 'thoughtbot/vim-rspec'
 Bundle 'pangloss/vim-javascript'
-Bundle 'kchmck/vim-coffee-script'
+Bundle 'tpope/vim-rails'
 Bundle 'tpope/vim-sensible'
 Bundle 'tpope/vim-surround'
 Bundle 'tpope/vim-fugitive'
@@ -32,45 +43,34 @@ Bundle 'scrooloose/syntastic'
 Bundle 'scrooloose/nerdtree'
 Bundle 'kien/ctrlp.vim'
 Bundle 'rking/ag.vim'
-Bundle 'kana/vim-textobj-user'
-Bundle 'nelstrom/vim-textobj-rubyblock'
-Bundle 'slim-template/vim-slim'
 Bundle 'jistr/vim-nerdtree-tabs'
-Bundle 'Blackrush/vim-gocode'
-Bundle 'derekwyatt/vim-scala'
 Bundle 'elzr/vim-json'
 Bundle 'honza/vim-snippets'
-Bundle 'guns/vim-clojure-static'
-Bundle 'guns/vim-clojure-highlight'
-Bundle 'tpope/vim-liquid'
-" Bundle 'tpope/vim-markdown'
-Bundle 'psykidellic/vim-jekyll'
-Bundle 'digitaltoad/vim-jade'
+Bundle 'tpope/vim-markdown'
 Bundle 'airblade/vim-gitgutter'
-Bundle 'takac/vim-fontmanager' 
-Plugin 'flazz/vim-colorschemes'
+Bundle 'takac/vim-fontmanager'
 
+let g:rainbow_active = 1
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+let NERDTreeIgnore = ['\.pyc$', '\~$'] 
 
 set title
 set showcmd
 set clipboard=unnamed
 set wildmenu
 set esckeys
-
+set textwidth=80
 set ttyfast
 set gdefault
 set encoding=utf-8 nobomb
-
-" set tabstop=2
-" set shiftwidth=2
-" set expandtab
-
 set binary
 set noeol
-set modeline
+
+" set modeline
 set exrc
 set secure
-" set cursorline
+set nocursorline
 
 set gfn=Monaco\ 10
 
@@ -95,6 +95,12 @@ let g:gitgutter_signs = 1
 
 let NERDTreeShowHidden=1
 
+highlight VertSplit ctermfg=None ctermbg=None cterm=None
+
+let g:user_emmet_mode='n'
+let g:user_emmet_mode='inv'
+let g:user_emmet_mode='a'
+
 set backupdir=~/.vim/backups
 set directory=~/.vim/swaps
 
@@ -102,20 +108,66 @@ if exists("&undodir")
   set undodir=~/.vim/undo
 endif
 
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+map <C-n> :NERDTreeToggle<CR>
+nmap <silent> <special> <C-n> :NERDTreeToggle<RETURN>
+let NERDTreeHighlightCursorline=0
+
 noremap <leader>W :w !sudo tee % > /dev/null<CR>
 
 if has("autocmd")
-	filetype on
-	autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
-	au InsertEnter * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-	au InsertLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape block"
-	au VimLeave * silent execute "!gconftool-2 --type string --set /apps/gnome-terminal/profiles/Default/cursor_shape ibeam"
-	set shiftwidth=2 tabstop=2 expandtab
+  filetype on
+  autocmd BufNewFile,BufRead *.json setfiletype json syntax=javascript
+  set shiftwidth=2 tabstop=2 expandtab
 endif
 
-" RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+""" Python PEP 8
+au BufRead,BufNewFile *py,*pyw,*.c,*.h set tabstop=4
+au BufRead,BufNewFile *.py,*pyw set shiftwidth=4
+au BufRead,BufNewFile *.py,*.pyw set expandtab
+au BufRead,BufNewFile *.py set softtabstop=4
 
+highlight BadWhitespace ctermbg=red guibg=red
+
+au BufRead,BufNewFile *.py,*.pyw match BadWhitespace /^\t\+/
+au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile *.py,*.pyw, set textwidth=100
+au BufNewFile *.py,*.pyw,*.c,*.h set fileformat=unix
+
+let python_highlight_all=1
+
+autocmd FileType python set autoindent
+set backspace=indent,eol,start
+autocmd FileType python set foldmethod=indent
+nnoremap <space> za 
+"""
+
+function! NERDTreeHighlightFile(extension, fg, bg, guifg, guibg)
+   exec 'autocmd filetype nerdtree highlight ' . a:extension .' ctermbg='. a:bg .' ctermfg='. a:fg .' guibg='. a:guibg .' guifg='. a:guifg
+   exec 'autocmd filetype nerdtree syn match ' . a:extension .' #^\s\+.*'. a:extension .'$#'
+endfunction
+
+if executable('ag')
+  let g:ackprg = 'ag --vimgrep'
+endif
+
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescript.tsx
+
+hi tsxTagName guifg=#E06C75
+
+hi tsxCloseString guifg=#F99575
+hi tsxCloseTag guifg=#F99575
+hi tsxAttributeBraces guifg=#F99575
+hi tsxEqual guifg=#F99575
+hi tsxAttrib guifg=#F8BD7F cterm=italic
+hi tsxTypeBraces guifg=#999999
+hi tsxTypes guifg=#666666
+hi ReactState guifg=#C176A7
+hi ReactProps guifg=#D19A66
+hi Events ctermfg=204 guifg=#56B6C2
+hi ReduxKeywords ctermfg=204 guifg=#C678DD
+hi WebBrowser ctermfg=204 guifg=#56B6C2
+hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
