@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/jorgeavelar/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -146,22 +146,15 @@ export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/home/jorgeavelar/.sdkman"
-[[ -s "/home/jorgeavelar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jorgeavelar/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="$HOME/.sdkman"
+[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 export PATH="$SDKMAN_DIR:$PATH"
 
-source /home/jorgeavelar/.ghcup/env
+source $HOME/.ghcup/env
 . $HOME/.ghcup/env
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-
-
-# opam configuration
-test -r /home/jorgeavelar/.opam/opam-init/init.zsh && . /home/jorgeavelar/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
-
-# added by travis gem
-[ -f /home/jorgeavelar/.travis/travis.sh ] && source /home/jorgeavelar/.travis/travis.sh
 
 
 export PYENV_ROOT="$HOME/.pyenv"
