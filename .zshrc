@@ -2,13 +2,14 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
+export ZSH="/home/jorgeavelar/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
+#ZSH_THEME="robbyrussell"
+ZSH_THEME="mylambda"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -108,13 +109,20 @@ alias egrep='egrep --color=auto'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -CF'
+
+alias app='cd ~/Apps'
+alias apps='cd ~/Apps'
+
 alias p='cd ~/Projects'
-alias s='cd ~/Projects/sites'
+alias rbn='cd ~/Projects/ribon'
+
+alias hm='cd /user/jorgeavelar'
+alias u='cd /user'
 
 # some git aliases
 alias gs='git status'
-alias gd='git diff'
-alias gb='git branch'
+alias gd='git --no-pager diff'
+alias gb='git --no-pager branch'
 
 #some ruby and ruby on rails aliases
 alias be='bundle exec'
@@ -123,26 +131,39 @@ alias rcop='bundle exec rubocop'
 
 alias ptest='unit2 discover -v .'
 
+alias emacs='emacs --no-window-system'
+
 export PATH="$HOME/.rbenv/bin:$PATH"
 eval "$(rbenv init -)"
 export PATH="$HOME/.rbenv/plugins/ruby-build/bin:$PATH"
 
+#export ANACONDA_PATH="/home/jorgeavelar/anaconda3"
+#export PATH="$ANACONDA_PATH/bin:$PATH"
 
-export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
-eval "$(pyenv virtualenv-init -)"
+#export PATH="/home/jorgeavelar/.pyenv/bin:$PATH"
+#eval "$(pyenv init -)"
+#eval "$(pyenv virtualenv-init -)"
 
 
 #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="$HOME/.sdkman"
-[[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+export SDKMAN_DIR="/home/jorgeavelar/.sdkman"
+[[ -s "/home/jorgeavelar/.sdkman/bin/sdkman-init.sh" ]] && source "/home/jorgeavelar/.sdkman/bin/sdkman-init.sh"
+export PATH="$SDKMAN_DIR:$PATH"
 
-source $HOME/.ghcup/env
+source /home/jorgeavelar/.ghcup/env
 . $HOME/.ghcup/env
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-# [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-export ANACONDA_PATH="$HOME/anaconda3"
-export PATH="$ANACONDA_PATH/bin:$PATH"
+
+# opam configuration
+test -r /home/jorgeavelar/.opam/opam-init/init.zsh && . /home/jorgeavelar/.opam/opam-init/init.zsh > /dev/null 2> /dev/null || true
+
+# added by travis gem
+[ -f /home/jorgeavelar/.travis/travis.sh ] && source /home/jorgeavelar/.travis/travis.sh
+
+
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init -)"
