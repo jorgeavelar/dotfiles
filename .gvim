@@ -1,0 +1,18 @@
+syntax on
+filetype on           " Enable filetype detection
+filetype indent on    " Enable filetype-specific indenting
+filetype plugin on    " Enable filetype-specific plugins
+
+colorscheme onehalflight
+
+set guifont=Monaco:h12
+set nowrap
+set number
+set nocompatible
+set background=light
+set list
+
+set guioptions-=m  "menu bar
+set guioptions-=T  "toolbar
+set guioptions-=r  "scrollbar right
+set guioptions-=L  "scrollbar left
